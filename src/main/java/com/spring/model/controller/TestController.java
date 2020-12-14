@@ -1,6 +1,7 @@
 package com.spring.model.controller;
 
 import com.spring.model.common.Result;
+import com.spring.model.strategypattern.CashContext;
 import com.spring.model.strategypattern.CashFactory;
 import com.spring.model.strategypattern.CashSuper;
 import io.swagger.annotations.ApiOperation;
@@ -13,6 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @ApiOperation("策略模式")
     @RequestMapping(value="strategypattern", method = RequestMethod.GET)
+    public Result getTotalStrategy(Double money, Integer num){
+        Result rs=new Result();
+        if(money==null|| num==null)
+        {
+            rs.setCode(300);
+            rs.setMsg("输入参数不能为空");
+            return rs;
+        }else{
+            CashContext cashContext=new CashContext("正常收费");
+            double totalPrice=cashContext.GetResult(money*num);
+            rs.setMsg("totalPrice:"+totalPrice);
+        }
+        return rs;
+    }
+
+    @ApiOperation("简单工厂模式")
+    @RequestMapping(value="factorypattern", method = RequestMethod.GET)
     public Result getTotal(Double money, Integer num){
         Result rs=new Result();
         if(money==null|| num==null)
