@@ -6,7 +6,7 @@ package com.spring.model.strategypattern;
  * @author
  * @date        2020/12/13 20:28
  **/
-public class CashRebate extends CashSuper{
+public class CashRebate extends CashSuper {
     private double moneyRebate=1d;
 
     public CashRebate(double moneyRebate) {

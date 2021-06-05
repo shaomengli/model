@@ -31,7 +31,7 @@ public class TestController {
 
     @ApiOperation("简单工厂模式")
     @RequestMapping(value="factorypattern", method = RequestMethod.GET)
-    public Result getTotal(Double money, Integer num){
+    public Result getTotal(Double money, Integer num,String type){
         Result rs=new Result();
         if(money==null|| num==null)
         {
@@ -39,7 +39,7 @@ public class TestController {
             rs.setMsg("输入参数不能为空");
             return rs;
         }else{
-            CashSuper cashSuper= CashFactory.createCashAccept("正常收费");
+            CashSuper cashSuper= CashFactory.createCashAccept(type);
             double totalPrice=cashSuper.acceptCash(money*num);
             rs.setMsg("totalPrice:"+totalPrice);
         }

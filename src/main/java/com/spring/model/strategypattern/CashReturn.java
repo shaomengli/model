@@ -21,7 +21,7 @@ public class CashReturn extends CashSuper{
         double result =money;
         if(money>=moneyCondition)
             result=money-(money/moneyCondition)*moneyReturn;
-        return 0;
+        return result;
     }
 
     public double getMoneyCondition() {
