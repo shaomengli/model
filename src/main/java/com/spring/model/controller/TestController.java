@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @ApiOperation("策略模式")
     @RequestMapping(value="strategypattern", method = RequestMethod.GET)
-    public Result getTotalStrategy(Double money, Integer num){
+    public Result getTotalStrategy(Double money, Integer num,String type){
         Result rs=new Result();
         if(money==null|| num==null)
         {
@@ -22,8 +22,8 @@ public class TestController {
             rs.setMsg("输入参数不能为空");
             return rs;
         }else{
-            CashContext cashContext=new CashContext("正常收费");
-            double totalPrice=cashContext.GetResult(money*num);
+            CashContext cashContext=new CashContext(type);
+            double totalPrice=cashContext.getResult(money*num);
             rs.setMsg("totalPrice:"+totalPrice);
         }
         return rs;
