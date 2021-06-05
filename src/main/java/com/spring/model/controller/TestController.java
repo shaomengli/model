@@ -36,6 +36,7 @@ public class TestController {
         if(money==null|| num==null)
         {
             rs.setCode(300);
+
             rs.setMsg("输入参数不能为空");
             return rs;
         }else{
